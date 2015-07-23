@@ -120,6 +120,7 @@ public class ZLSwipeableView: UIView {
     public var swiping: ((view: UIView, atLocation: CGPoint, translation: CGPoint) -> ())?
     public var didEnd: ((view: UIView, atLocation: CGPoint) -> ())?
     public var didSwipe: ((view: UIView, inDirection: ZLSwipeableViewDirection, directionVector: CGVector) -> ())?
+    public var topViewDidChange: ((oldTopView: UIView, newTopView: UIView?) -> ())?
     public var didCancel: ((view: UIView) -> ())?
 
     // MARK: Swipe Control
@@ -164,6 +165,7 @@ public class ZLSwipeableView: UIView {
         removeFromViews(topView)
         loadViews()
         didSwipe?(view: topView, inDirection: direction, directionVector: directionVector)
+        topViewDidChange?(oldTopView: topView, newTopView: self.topView())
     }
     
     // MARK: View Management
