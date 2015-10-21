@@ -30,7 +30,7 @@ public struct ZLSwipeableViewDirection : OptionSetType, CustomStringConvertible 
 
     // MARK: BitwiseOperationsType
     public static var allZeros: ZLSwipeableViewDirection {
-        return self(rawValue: 0)
+        return self.init(rawValue: 0)
     }
 
     public static var None: ZLSwipeableViewDirection       { return self.init(rawValue: 0b0000) }
@@ -259,7 +259,7 @@ public class ZLSwipeableView: UIView {
         setup()
     }
     
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
